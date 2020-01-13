@@ -1,0 +1,139 @@
+
+
+	<template>
+
+		<div class = "row" v-if = "total > 0">
+
+			<div class = "col-md-8 col-12">
+
+				<div class = "card" v-for = "post in posts" v-bind:key = "post.id">
+					
+					<img v-bind:src = "'/img/posts/' + post.image" class = "card-img-top image" alt = "post.title">
+
+					<div class = "card-body">
+						
+						<h4 class = "card-title">{{ post.title }}</h4>
+
+						<router-link v-bind:to = "{ name: 'category', params: {category_id: post.category_id} }">
+
+							<h5><span class = "badge badge-info"><i class = "fa fa-bookmark"></i> {{ post.category }}</span></h5>
+
+						</router-link>
+
+						<h5><span class = "badge badge-light"><i class = "fa fa-calendar"></i> {{ post.created_at | formatDate }}</span></h5>
+
+						<p class = "card-text">
+
+							<span v-html = "post.content"></span>
+
+						</p>
+
+						<button class = "btn btn-primary" v-on:click = "postClick(post)">Ver resumen</button>
+
+						<router-link v-bind:to = "{ name: 'post', params: {post_id: post.id} }" class = "btn btn-success">Ver completo</router-link>
+
+					</div>
+
+				</div>	
+
+				<v-pagination v-model = "currentPage" class = "mt-3"
+
+					v-bind:page-count = "total" 
+					v-bind:classes = "bootstrapPaginationClasses" 
+					v-bind:labels = "paginationAnchorTexts">
+
+				</v-pagination>
+
+			</div>
+
+			<post-modal v-bind:getPost = "postSelected"></post-modal>
+
+		</div>	
+
+	</template>	
+
+	<script>
+
+		import vPagination from 'vue-plain-pagination';
+
+		export default {
+
+			data() {
+
+				return {
+
+					postSelected: '',
+			    	posts: [],
+			    	currentPage: 1,
+			    	total: '',
+			    	bootstrapPaginationClasses: {
+
+			    		ul: 'pagination',
+			    		li: 'page-item',
+			    		liActive: 'active',
+			    		liDisable: 'disabled',
+			    		button: 'page-link'
+
+			    	},
+			    	paginationAnchorTexts: {
+
+			    		first: '',
+			    		prev: '&laquo;',
+			    		next: '&raquo;',
+			    		last: ''
+
+			    	}
+
+			    }
+
+			},
+
+			created() {
+
+				this.apiPosts();
+
+			},
+
+			methods: {
+
+				postClick: function(p) {
+
+					this.postSelected = p;
+
+				},
+
+				apiPosts() {
+
+					fetch('/api/post?page=' + this.currentPage)
+					.then(response => response.json())
+					.then(json => {
+
+						this.posts = json.data.data;
+						this.total = json.data.last_page;
+
+					})
+
+				}
+
+			},
+
+			watch: {
+
+				currentPage: function(newVal, oldVal) {
+
+					this.apiPosts();
+
+				}
+
+			},
+
+			components: {
+
+				vPagination
+
+			}
+
+		}
+
+	</script>	
+

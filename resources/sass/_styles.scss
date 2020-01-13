@@ -1,0 +1,93 @@
+
+
+body
+{
+
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	text-decoration: none;
+
+}
+
+a, 
+a:hover 
+{
+
+	list-style: none;
+	text-decoration: none;
+
+}
+
+.menu
+{
+
+	background: $main-color;
+	margin-bottom: 20px;
+
+	.navbar-brand
+	{
+		color: white;
+	}
+
+	.navbar-nav .nav-link
+	{
+		color: white;
+	}
+
+}
+
+.title
+{
+
+	text-align: center;
+
+}
+
+.spacing-1
+{
+
+	height: 100px;
+
+}
+
+.spacing-2
+{
+
+	height: 200px;
+
+}
+
+.spacing-3
+{
+
+	height: 300px;
+
+}
+
+.image
+{
+
+	height: 400px;
+
+}
+
+.card
+{
+
+	margin-top: 10px;
+
+}
+
+footer
+{
+
+	background: $main-color;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	color: white;
+	margin-top: 20px;
+
+}
+
