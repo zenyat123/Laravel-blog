@@ -27,10 +27,20 @@ class PostController extends Controller
 
     }
     
-    public function index()
+    public function index(Request $request)
     {
 
-        $posts = Post::with("category")->orderBy("created_at", "desc")->paginate(6);
+        $posts = Post::with("category")
+                         ->orderBy("created_at", request("order", "asc"));
+
+                         if($request->has("search"))
+                         {
+
+                            $posts = $posts->where("title", "like", "%" . request("search") . "%");
+
+                         }
+                         
+                         $posts = $posts->paginate(6);
         
         return view("admin.post.index", compact("posts"));
 

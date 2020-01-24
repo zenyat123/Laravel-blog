@@ -9,6 +9,21 @@
 		<h2 class = "text-primary text-center mt-2">Post</h2>
 
 		<div class = "spacing-1"></div>
+
+		<form action = "{{ route('post.index') }}" method = "get" class = "form-inline mb-2 float-right">
+			
+			<select name = "order" class = "form-control mr-2">
+				
+				<option value = "asc">Ascendente</option>
+				<option value = "desc" {{ request("order") == "desc" ? "selected" : "" }}>Descendente</option>
+
+			</select>
+
+			<input type = "text" name = "search" value = "{{ request('search') }}" class = "form-control mr-2" placeholder = "Buscar...">	
+
+			<button type = "submit" class = "btn btn-outline-primary">Buscar</button>
+
+		</form>
 		
 		<table class = "table table-bordered">
 			
@@ -70,7 +85,13 @@
 
 		</table>
 
-		{{ $posts->links() }}
+		{{ $posts->appends([
+
+							"order" => request("order"),
+							"search" => request("search")
+
+						  ])
+		                ->links() }}
 
 		<a href = "{{ route('post.create') }}" class = "btn btn-primary float-right mt-2 mb-2">Crear Post</a>
 
