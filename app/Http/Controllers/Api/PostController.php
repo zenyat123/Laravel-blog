@@ -14,10 +14,10 @@ class PostController extends ApiResponseController
     {
         
         $posts = Post::join("categories", "posts.category_id", "=", "categories.id")
-                       ->select("posts.*", "categories.category")
-                       ->where("posts.posted", "=", "si")
-                       ->orderBy("posts.created_at", "desc")
-                       ->paginate(6);
+                   ->select("posts.*", "categories.category")
+                    ->where("posts.posted", "=", "si")
+                  ->orderBy("posts.created_at", "asc")
+                 ->paginate(6);
 
         return $this->successResponse($posts);
 
@@ -60,7 +60,7 @@ class PostController extends ApiResponseController
     public function category(Category $category)
     {
 
-        return $this->successResponse(["posts" => $category->post()->orderBy("created_at", "desc")->paginate(6), "category" => $category]);
+        return $this->successResponse(["posts" => $category->post()->orderBy("created_at", "asc")->paginate(6), "category" => $category]);
 
     }
 

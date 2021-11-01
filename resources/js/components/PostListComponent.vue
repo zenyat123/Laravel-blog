@@ -2,39 +2,47 @@
 
 	<template>
 
-		<div class = "row" v-if = "total > 0">
+		<div v-if = "total > 0">
 
-			<div class = "col-md-8 col-12">
+			<div class = "row">
 
-				<div class = "card" v-for = "post in posts" v-bind:key = "post.id">
-					
-					<img v-bind:src = "'/img/posts/' + post.image" class = "card-img-top image" alt = "post.title">
+				<div class = "col-md-4 col-12" v-for = "post in posts" v-bind:key = "post.id">
 
-					<div class = "card-body">
+					<div class = "card">
 						
-						<h4 class = "card-title">{{ post.title }}</h4>
+						<img v-bind:src = "'/img/posts/' + post.image" class = "card-img-top image" alt = "post.title">
 
-						<router-link v-bind:to = "{ name: 'category', params: {category_id: post.category_id} }">
+						<div class = "card-body">
+							
+							<h4 class = "card-title">{{ post.title.substring(0,29) }}</h4>
 
-							<h5><span class = "badge badge-info"><i class = "fa fa-bookmark"></i> {{ post.category }}</span></h5>
+							<router-link v-bind:to = "{ name: 'category', params: {category_id: post.category_id} }">
 
-						</router-link>
+								<h5><span class = "badge badge-info"><i class = "fa fa-bookmark"></i> {{ post.category }}</span></h5>
 
-						<h5><span class = "badge badge-light"><i class = "fa fa-calendar"></i> {{ post.created_at | formatDate }}</span></h5>
+							</router-link>
 
-						<p class = "card-text">
+							<h5><span class = "badge badge-light"><i class = "fa fa-calendar"></i> {{ post.created_at | formatDate }}</span></h5>
 
-							<span v-html = "post.content"></span>
+							<p class = "card-text">
 
-						</p>
+								<span v-html = "post.content.substring(0,130)"></span>
 
-						<button class = "btn btn-primary" v-on:click = "postClick(post)">Ver resumen</button>
+							</p>
 
-						<router-link v-bind:to = "{ name: 'post', params: {post_id: post.id} }" class = "btn btn-success">Ver completo</router-link>
+							<button class = "btn btn-primary" v-on:click = "postClick(post)">Ver resumen</button>
+
+							<router-link v-bind:to = "{ name: 'post', params: {post_id: post.id} }" class = "btn btn-success">Ver completo</router-link>
+
+						</div>
 
 					</div>
 
-				</div>	
+				</div>
+
+			</div>
+
+			<div class = "row justify-content-center">
 
 				<v-pagination v-model = "currentPage" class = "mt-3"
 
@@ -48,9 +56,9 @@
 
 			<post-modal v-bind:getPost = "postSelected"></post-modal>
 
-		</div>	
+		</div>
 
-	</template>	
+	</template>
 
 	<script>
 
@@ -135,5 +143,5 @@
 
 		}
 
-	</script>	
+	</script>
 

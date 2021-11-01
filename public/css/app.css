@@ -14160,10 +14160,18 @@ body {
   text-decoration: none;
 }
 
-a,
-a:hover {
-  list-style: none;
-  text-decoration: none;
+body,
+html {
+  height: 100%;
+}
+
+#app {
+  position: relative;
+  min-height: 100%;
+}
+
+.container {
+  padding-bottom: 50px;
 }
 
 .menu {
@@ -14177,6 +14185,12 @@ a:hover {
 
 .menu .navbar-nav .nav-link {
   color: white;
+}
+
+a,
+a:hover {
+  list-style: none;
+  text-decoration: none;
 }
 
 .title {
@@ -14205,10 +14219,14 @@ a:hover {
 
 footer {
   background: #00838F;
+  position: absolute;
+  margin-top: 20px;
+  width: 100%;
   height: 50px;
   line-height: 50px;
   text-align: center;
   color: white;
-  margin-top: 20px;
+  clear: both;
+  bottom: 0px;
 }
 

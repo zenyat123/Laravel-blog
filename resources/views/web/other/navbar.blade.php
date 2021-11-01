@@ -10,7 +10,7 @@
 
 			<router-link to = "/" class = "navbar-brand">
 
-				Laravel
+				Vue
 
 			</router-link>
 

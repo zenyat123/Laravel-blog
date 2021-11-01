@@ -2,35 +2,41 @@
 
 	<template>
 
-		<div class = "row" v-if = "total > 0">
+		<div v-if = "total > 0">
 
-			<div class = "col-md-8 col-12">
+			<h2><span class = "badge badge-info">{{ category.category }}</span></h2>
 
-				<h3><span class = "badge badge-info">{{ category.category }}</span></h3>
+			<div class = "row">
 
-				<div class = "spacing-1"></div>
+				<div class = "col-md-4 col-12" v-for = "post in posts" v-bind:key = "post.id">					
 
-				<div class = "card" v-for = "post in posts" v-bind:key = "post.id">
+					<div class = "card">
 
-					<img v-bind:src = "'/img/posts/' + post.image" class = "card-img-top image" alt = "post.title">
+						<img v-bind:src = "'/img/posts/' + post.image" class = "card-img-top image" alt = "post.title">
 
-					<div class = "card-body">
+						<div class = "card-body">
 
-						<h4 class = "card-title">{{ post.title }}</h4>
+							<h4 class = "card-title">{{ post.title.substring(0,29) }}</h4>
 
-						<p class = "card-text">
+							<p class = "card-text">
 
-							<span v-html = "post.content"></span>
+								<span v-html = "post.content.substring(0,130)"></span>
 
-						</p>
+							</p>
 
-						<button class = "btn btn-primary" v-on:click = "postClick(post)">Ver resumen</button>
+							<button class = "btn btn-primary" v-on:click = "postClick(post)">Ver resumen</button>
 
-						<router-link v-bind:to = "{ name: 'post', params: {post_id: post.id} }" class = "btn btn-success">Ver completo</router-link>
+							<router-link v-bind:to = "{ name: 'post', params: {post_id: post.id} }" class = "btn btn-success">Ver completo</router-link>
 
-					</div>
+						</div>
+
+					</div>				
 
 				</div>
+
+			</div>
+
+			<div class = "row justify-content-center">
 
 				<v-pagination v-model = "currentPage" class = "mt-3"
 

@@ -2085,6 +2085,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2234,6 +2240,14 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_plain_pagination__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-plain-pagination */ "./node_modules/vue-plain-pagination/dist/vue-plain-pagination.umd.min.js");
 /* harmony import */ var vue_plain_pagination__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_plain_pagination__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -55540,73 +55554,83 @@ var render = function() {
   return _vm.total > 0
     ? _c(
         "div",
-        { staticClass: "row" },
         [
+          _c("h2", [
+            _c("span", { staticClass: "badge badge-info" }, [
+              _vm._v(_vm._s(_vm.category.category))
+            ])
+          ]),
+          _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-md-8 col-12" },
-            [
-              _c("h3", [
-                _c("span", { staticClass: "badge badge-info" }, [
-                  _vm._v(_vm._s(_vm.category.category))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "spacing-1" }),
-              _vm._v(" "),
-              _vm._l(_vm.posts, function(post) {
-                return _c("div", { key: post.id, staticClass: "card" }, [
-                  _c("img", {
-                    staticClass: "card-img-top image",
-                    attrs: {
-                      src: "/img/posts/" + post.image,
-                      alt: "post.title"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "card-body" },
-                    [
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v(_vm._s(post.title))
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "card-text" }, [
-                        _c("span", {
-                          domProps: { innerHTML: _vm._s(post.content) }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-primary",
-                          on: {
-                            click: function($event) {
-                              return _vm.postClick(post)
+            { staticClass: "row" },
+            _vm._l(_vm.posts, function(post) {
+              return _c(
+                "div",
+                { key: post.id, staticClass: "col-md-4 col-12" },
+                [
+                  _c("div", { staticClass: "card" }, [
+                    _c("img", {
+                      staticClass: "card-img-top image",
+                      attrs: {
+                        src: "/img/posts/" + post.image,
+                        alt: "post.title"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "card-body" },
+                      [
+                        _c("h4", { staticClass: "card-title" }, [
+                          _vm._v(_vm._s(post.title.substring(0, 29)))
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "card-text" }, [
+                          _c("span", {
+                            domProps: {
+                              innerHTML: _vm._s(post.content.substring(0, 130))
                             }
-                          }
-                        },
-                        [_vm._v("Ver resumen")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "btn btn-success",
-                          attrs: {
-                            to: { name: "post", params: { post_id: post.id } }
-                          }
-                        },
-                        [_vm._v("Ver completo")]
-                      )
-                    ],
-                    1
-                  )
-                ])
-              }),
-              _vm._v(" "),
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary",
+                            on: {
+                              click: function($event) {
+                                return _vm.postClick(post)
+                              }
+                            }
+                          },
+                          [_vm._v("Ver resumen")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "btn btn-success",
+                            attrs: {
+                              to: { name: "post", params: { post_id: post.id } }
+                            }
+                          },
+                          [_vm._v("Ver completo")]
+                        )
+                      ],
+                      1
+                    )
+                  ])
+                ]
+              )
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "row justify-content-center" },
+            [
               _c("v-pagination", {
                 staticClass: "mt-3",
                 attrs: {
@@ -55623,7 +55647,7 @@ var render = function() {
                 }
               })
             ],
-            2
+            1
           ),
           _vm._v(" "),
           _c("post-modal", { attrs: { getPost: _vm.postSelected } })
@@ -55743,94 +55767,107 @@ var render = function() {
   return _vm.total > 0
     ? _c(
         "div",
-        { staticClass: "row" },
         [
           _c(
             "div",
-            { staticClass: "col-md-8 col-12" },
-            [
-              _vm._l(_vm.posts, function(post) {
-                return _c("div", { key: post.id, staticClass: "card" }, [
-                  _c("img", {
-                    staticClass: "card-img-top image",
-                    attrs: {
-                      src: "/img/posts/" + post.image,
-                      alt: "post.title"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "card-body" },
-                    [
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v(_vm._s(post.title))
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "router-link",
-                        {
-                          attrs: {
-                            to: {
-                              name: "category",
-                              params: { category_id: post.category_id }
+            { staticClass: "row" },
+            _vm._l(_vm.posts, function(post) {
+              return _c(
+                "div",
+                { key: post.id, staticClass: "col-md-4 col-12" },
+                [
+                  _c("div", { staticClass: "card" }, [
+                    _c("img", {
+                      staticClass: "card-img-top image",
+                      attrs: {
+                        src: "/img/posts/" + post.image,
+                        alt: "post.title"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "card-body" },
+                      [
+                        _c("h4", { staticClass: "card-title" }, [
+                          _vm._v(_vm._s(post.title.substring(0, 29)))
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "router-link",
+                          {
+                            attrs: {
+                              to: {
+                                name: "category",
+                                params: { category_id: post.category_id }
+                              }
                             }
-                          }
-                        },
-                        [
-                          _c("h5", [
-                            _c("span", { staticClass: "badge badge-info" }, [
-                              _c("i", { staticClass: "fa fa-bookmark" }),
-                              _vm._v(" " + _vm._s(post.category))
+                          },
+                          [
+                            _c("h5", [
+                              _c("span", { staticClass: "badge badge-info" }, [
+                                _c("i", { staticClass: "fa fa-bookmark" }),
+                                _vm._v(" " + _vm._s(post.category))
+                              ])
                             ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("h5", [
+                          _c("span", { staticClass: "badge badge-light" }, [
+                            _c("i", { staticClass: "fa fa-calendar" }),
+                            _vm._v(
+                              " " +
+                                _vm._s(_vm._f("formatDate")(post.created_at))
+                            )
                           ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("h5", [
-                        _c("span", { staticClass: "badge badge-light" }, [
-                          _c("i", { staticClass: "fa fa-calendar" }),
-                          _vm._v(
-                            " " + _vm._s(_vm._f("formatDate")(post.created_at))
-                          )
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "card-text" }, [
-                        _c("span", {
-                          domProps: { innerHTML: _vm._s(post.content) }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-primary",
-                          on: {
-                            click: function($event) {
-                              return _vm.postClick(post)
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "card-text" }, [
+                          _c("span", {
+                            domProps: {
+                              innerHTML: _vm._s(post.content.substring(0, 130))
                             }
-                          }
-                        },
-                        [_vm._v("Ver resumen")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "btn btn-success",
-                          attrs: {
-                            to: { name: "post", params: { post_id: post.id } }
-                          }
-                        },
-                        [_vm._v("Ver completo")]
-                      )
-                    ],
-                    1
-                  )
-                ])
-              }),
-              _vm._v(" "),
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary",
+                            on: {
+                              click: function($event) {
+                                return _vm.postClick(post)
+                              }
+                            }
+                          },
+                          [_vm._v("Ver resumen")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "btn btn-success",
+                            attrs: {
+                              to: { name: "post", params: { post_id: post.id } }
+                            }
+                          },
+                          [_vm._v("Ver completo")]
+                        )
+                      ],
+                      1
+                    )
+                  ])
+                ]
+              )
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "row justify-content-center" },
+            [
               _c("v-pagination", {
                 staticClass: "mt-3",
                 attrs: {
@@ -55847,7 +55884,7 @@ var render = function() {
                 }
               })
             ],
-            2
+            1
           ),
           _vm._v(" "),
           _c("post-modal", { attrs: { getPost: _vm.postSelected } })
@@ -71731,8 +71768,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! c:\Xampp\htdocs\Laravel\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! c:\Xampp\htdocs\Laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Xampp\htdocs\Laravel\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Xampp\htdocs\Laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
