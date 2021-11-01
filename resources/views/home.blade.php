@@ -1,8 +1,8 @@
 
 
-@extends('layouts.app')
+@extends("layouts.app")
 
-@section('content')
+@section("content")
 
 <div class = "container">
 
@@ -20,11 +20,11 @@
 
                 <div class = "card-body">
 
-                    @if (session('status'))
+                    @if (session("status"))
 
                         <div class = "alert alert-success" role = "alert">
                             
-                            {{ session('status') }}
+                            {{ session("status") }}
 
                         </div>
 
@@ -44,7 +44,7 @@
                         <div class = "col-md-6">
                             
                             <a href = "{{ route('web') }}" class = "dropdown-item"><i class = "fa fa-ravelry"></i> Web</a>
-                            <a href = "{{ route('user.index') }}" class = "dropdown-item"><i class = "fa fa-superpowers"></i> Componentes</a>
+                            <a href = "#" class = "dropdown-item"><i class = "fa fa-superpowers"></i> Componentes</a>
                             <a href = "#" class = "dropdown-item"><i class = "fa fa-indent"></i> Api</a>
                             <a href = "{{ route('contact.index') }}" class = "dropdown-item"><i class = "fa fa-handshake-o"></i> Contactos</a>
 

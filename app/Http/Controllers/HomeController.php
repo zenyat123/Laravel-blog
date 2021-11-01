@@ -13,8 +13,10 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+
+        $this->middleware("auth");
         $this->middleware("rol.admin");
+
     }
 
     /**
@@ -24,6 +26,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        return view("home");
+
     }
+
+    public function admin()
+    {
+
+        return view("welcome");
+
+    }
+
 }

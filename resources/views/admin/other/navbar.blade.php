@@ -1,17 +1,16 @@
 
 
-	<nav class = "navbar navbar-expand-lg navbar-light" id = "app">
+	<nav class = "navbar navbar-expand-md navbar-light bg-white shadow-sm mb-4">
 		
-		<a href = "{{ route('admin') }}" class = "navbar-brand">Laravel</a>
+		<a href = "{{ route('home') }}" class = "navbar-brand">Laravel</a>
 
-		<button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target = "#menuSuperior" 
-				aria-controls = "menuSuperior" aria-expanded = "false" aria-label = "Toggle navigation">
+		<button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target = "#menuSuperior" aria-controls = "menuSuperior" aria-expanded = "false" aria-label = "Toggle navigation">
 	    	
 	    	<span class="navbar-toggler-icon"></span>
 
 	  	</button>
 
-		<div class = "collapse navbar-collapse" id = "menuSuperior">
+		<div class = "navbar-collapse collapse" id = "menuSuperior">
 			
 			<ul class = "navbar-nav mr-auto">			
 
@@ -53,14 +52,13 @@
 						<a href = "{{ route('admin') }}" class = "dropdown-item">Perfil</a>
 						<a href = "{{ route('home') }}" class = "dropdown-item">Configuración</a>
 
-						<a href = "{{ route('logout') }}" class = "dropdown-item" 
-						   onclick = "event.preventDefault(); document.getElementById('logout-form').submit();">
+						<a href = "{{ route('logout') }}" class = "dropdown-item" onclick = "event.preventDefault(); document.getElementById('logout-form').submit();">
                            
-                            {{ __('Logout') }}
+                            {{ __("Logout") }}
 
                         </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        <form id = "logout-form" action = "{{ route('logout') }}" method = "POST" style = "display: none;">
                             @csrf
                         </form>
 

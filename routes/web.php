@@ -11,15 +11,13 @@
 |
 */
 
-Route::get("/admin", function () {
-    return view("welcome");
-})->name("admin");
-
 Auth::routes();
 
-Route::get("/home", "HomeController@index")->name("home");
-
 Route::get("/", "Web\WebController@index")->name("web");
+
+Route::get("/admin", "HomeController@admin")->name("admin");
+
+Route::get("/home", "HomeController@index")->name("home");
 
 Route::resource("/admin/user", "Admin\UserController");
 
