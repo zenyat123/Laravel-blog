@@ -37,6 +37,8 @@ class PostController extends ApiResponseController
     {
 
         $post->category;
+
+        $post->comments;
        
         return $this->successResponse($post);
 

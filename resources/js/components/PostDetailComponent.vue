@@ -6,7 +6,7 @@
 
 			<div v-if = "post">
 
-				<div class = "card">
+				<div class = "card mb-3">
 
 					<div class = "card-header">
 
@@ -26,11 +26,45 @@
 
 						<h5><span class = "badge badge-light"><i class = "fa fa-calendar"></i> {{ post.created_at | formatDate }}</span></h5>
 
-						<p>
+						<span v-html = "post.content"></span>
 
-							<span v-html = "post.content"></span>
+					</div>
 
-						</p>
+				</div>
+
+				<div v-if = "post.comments != 0">
+
+					<h3 class = "mt-3 mb-3">Comentarios</h3>
+
+					<div class = "row">
+
+						<div class = "col-md-3 col-12" v-for = "comment in comments">
+
+							<div v-if = "comment.approved == 1">
+
+								<div class = "card mb-3">
+
+									<div class = "card-header">
+
+										{{ comment.title }}
+
+									</div>
+
+									<div class = "card-body">
+
+										<p class = "card-text">
+
+											{{ comment.comment }}
+
+										</p>
+
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
 
 					</div>
 
@@ -56,7 +90,8 @@
 
 				return {
 
-					post: ''
+					post: '',
+					comments: ''
 					
 				}
 
@@ -74,7 +109,12 @@
 
 					fetch('/api/post/' + this.$route.params.post_id)
 					.then(response => response.json())
-					.then(json => this.post = json.data)
+					.then(json => {
+
+						this.post = json.data;
+						this.comments = json.data.comments;
+
+					})
 
 				}
 

@@ -2,53 +2,63 @@
 
 	<template>
 
-		<div v-if = "total > 0">
+		<div>
 
-			<h2><span class = "badge badge-info">{{ category.category }}</span></h2>
+			<div v-if = "total > 0">
 
-			<div class = "row">
+				<h2><span class = "badge badge-info">{{ category.category }}</span></h2>
 
-				<div class = "col-md-4 col-12" v-for = "post in posts" v-bind:key = "post.id">					
+				<div class = "row">
 
-					<div class = "card">
+					<div class = "col-md-4 col-12" v-for = "post in posts" v-bind:key = "post.id">					
 
-						<img v-bind:src = "'/img/posts/' + post.image" class = "card-img-top image" alt = "post.title">
+						<div class = "card">
 
-						<div class = "card-body">
+							<img v-bind:src = "'/img/posts/' + post.image" class = "card-img-top image" alt = "post.title">
 
-							<h4 class = "card-title">{{ post.title.substring(0,29) }}</h4>
+							<div class = "card-body">
 
-							<p class = "card-text">
+								<h4 class = "card-title">{{ post.title.substring(0,29) }}</h4>
 
-								<span v-html = "post.content.substring(0,130)"></span>
+								<p class = "card-text">
 
-							</p>
+									<span v-html = "post.content.substring(0,130)"></span>
 
-							<button class = "btn btn-primary" v-on:click = "postClick(post)">Ver resumen</button>
+								</p>
 
-							<router-link v-bind:to = "{ name: 'post', params: {post_id: post.id} }" class = "btn btn-success">Ver completo</router-link>
+								<button class = "btn btn-primary" v-on:click = "postClick(post)">Ver resumen</button>
 
-						</div>
+								<router-link v-bind:to = "{ name: 'post', params: {post_id: post.id} }" class = "btn btn-success">Ver completo</router-link>
 
-					</div>				
+							</div>
+
+						</div>				
+
+					</div>
 
 				</div>
 
+				<div class = "row justify-content-center">
+
+					<v-pagination v-model = "currentPage" class = "mt-3"
+
+						v-bind:page-count = "pages" 
+						v-bind:classes = "bootstrapPaginationClasses" 
+						v-bind:labels = "paginationAnchorTexts">
+
+					</v-pagination>
+
+				</div>
+
+				<post-modal v-bind:getPost = "postSelected"></post-modal>
+
 			</div>
 
-			<div class = "row justify-content-center">
+			<div v-else>
 
-				<v-pagination v-model = "currentPage" class = "mt-3"
-
-					v-bind:page-count = "total" 
-					v-bind:classes = "bootstrapPaginationClasses" 
-					v-bind:labels = "paginationAnchorTexts">
-
-				</v-pagination>
+				<h1>Sin posts</h1>
 
 			</div>
-
-			<post-modal v-bind:getPost = "postSelected"></post-modal>
 
 		</div>
 
@@ -68,6 +78,7 @@
 			    	posts: [],
 			    	category: '',
 			    	currentPage: 1,
+			    	pages: '',
 			    	total: '',
 			    	bootstrapPaginationClasses: {
 
@@ -113,7 +124,8 @@
 
 						this.category = json.data.category;
 						this.posts = json.data.posts.data;
-						this.total = json.data.posts.last_page;
+						this.pages = json.data.posts.last_page;
+						this.total = json.data.posts.to;
 
 					})
 

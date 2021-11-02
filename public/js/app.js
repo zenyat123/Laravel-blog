@@ -2091,6 +2091,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2099,6 +2109,7 @@ __webpack_require__.r(__webpack_exports__);
       posts: [],
       category: '',
       currentPage: 1,
+      pages: '',
       total: '',
       bootstrapPaginationClasses: {
         ul: 'pagination',
@@ -2130,7 +2141,8 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (json) {
         _this.category = json.data.category;
         _this.posts = json.data.posts.data;
-        _this.total = json.data.posts.last_page;
+        _this.pages = json.data.posts.last_page;
+        _this.total = json.data.posts.to;
       });
     }
   },
@@ -2205,10 +2217,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      post: ''
+      post: '',
+      comments: ''
     };
   },
   created: function created() {
@@ -2221,7 +2268,8 @@ __webpack_require__.r(__webpack_exports__);
       fetch('/api/post/' + this.$route.params.post_id).then(function (response) {
         return response.json();
       }).then(function (json) {
-        return _this.post = json.data;
+        _this.post = json.data;
+        _this.comments = json.data.comments;
       });
     }
   }
@@ -55551,110 +55599,117 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.total > 0
-    ? _c(
-        "div",
-        [
-          _c("h2", [
-            _c("span", { staticClass: "badge badge-info" }, [
-              _vm._v(_vm._s(_vm.category.category))
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "row" },
-            _vm._l(_vm.posts, function(post) {
-              return _c(
-                "div",
-                { key: post.id, staticClass: "col-md-4 col-12" },
-                [
-                  _c("div", { staticClass: "card" }, [
-                    _c("img", {
-                      staticClass: "card-img-top image",
-                      attrs: {
-                        src: "/img/posts/" + post.image,
-                        alt: "post.title"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "card-body" },
-                      [
-                        _c("h4", { staticClass: "card-title" }, [
-                          _vm._v(_vm._s(post.title.substring(0, 29)))
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "card-text" }, [
-                          _c("span", {
-                            domProps: {
-                              innerHTML: _vm._s(post.content.substring(0, 130))
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-primary",
-                            on: {
-                              click: function($event) {
-                                return _vm.postClick(post)
+  return _c("div", [
+    _vm.total > 0
+      ? _c(
+          "div",
+          [
+            _c("h2", [
+              _c("span", { staticClass: "badge badge-info" }, [
+                _vm._v(_vm._s(_vm.category.category))
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "row" },
+              _vm._l(_vm.posts, function(post) {
+                return _c(
+                  "div",
+                  { key: post.id, staticClass: "col-md-4 col-12" },
+                  [
+                    _c("div", { staticClass: "card" }, [
+                      _c("img", {
+                        staticClass: "card-img-top image",
+                        attrs: {
+                          src: "/img/posts/" + post.image,
+                          alt: "post.title"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "card-body" },
+                        [
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v(_vm._s(post.title.substring(0, 29)))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "card-text" }, [
+                            _c("span", {
+                              domProps: {
+                                innerHTML: _vm._s(
+                                  post.content.substring(0, 130)
+                                )
                               }
-                            }
-                          },
-                          [_vm._v("Ver resumen")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "router-link",
-                          {
-                            staticClass: "btn btn-success",
-                            attrs: {
-                              to: { name: "post", params: { post_id: post.id } }
-                            }
-                          },
-                          [_vm._v("Ver completo")]
-                        )
-                      ],
-                      1
-                    )
-                  ])
-                ]
-              )
-            }),
-            0
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "row justify-content-center" },
-            [
-              _c("v-pagination", {
-                staticClass: "mt-3",
-                attrs: {
-                  "page-count": _vm.total,
-                  classes: _vm.bootstrapPaginationClasses,
-                  labels: _vm.paginationAnchorTexts
-                },
-                model: {
-                  value: _vm.currentPage,
-                  callback: function($$v) {
-                    _vm.currentPage = $$v
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-primary",
+                              on: {
+                                click: function($event) {
+                                  return _vm.postClick(post)
+                                }
+                              }
+                            },
+                            [_vm._v("Ver resumen")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "btn btn-success",
+                              attrs: {
+                                to: {
+                                  name: "post",
+                                  params: { post_id: post.id }
+                                }
+                              }
+                            },
+                            [_vm._v("Ver completo")]
+                          )
+                        ],
+                        1
+                      )
+                    ])
+                  ]
+                )
+              }),
+              0
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "row justify-content-center" },
+              [
+                _c("v-pagination", {
+                  staticClass: "mt-3",
+                  attrs: {
+                    "page-count": _vm.pages,
+                    classes: _vm.bootstrapPaginationClasses,
+                    labels: _vm.paginationAnchorTexts
                   },
-                  expression: "currentPage"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("post-modal", { attrs: { getPost: _vm.postSelected } })
-        ],
-        1
-      )
-    : _vm._e()
+                  model: {
+                    value: _vm.currentPage,
+                    callback: function($$v) {
+                      _vm.currentPage = $$v
+                    },
+                    expression: "currentPage"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("post-modal", { attrs: { getPost: _vm.postSelected } })
+          ],
+          1
+        )
+      : _c("div", [_c("h1", [_vm._v("Sin posts")])])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -55681,7 +55736,7 @@ var render = function() {
   return _c("div", [
     _vm.post
       ? _c("div", [
-          _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card mb-3" }, [
             _c("div", { staticClass: "card-header" }, [
               _c("img", {
                 staticClass: "card-img-top",
@@ -55729,15 +55784,52 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _c("p", [
-                  _c("span", {
-                    domProps: { innerHTML: _vm._s(_vm.post.content) }
-                  })
-                ])
+                _c("span", {
+                  domProps: { innerHTML: _vm._s(_vm.post.content) }
+                })
               ],
               1
             )
-          ])
+          ]),
+          _vm._v(" "),
+          _vm.post.comments != 0
+            ? _c("div", [
+                _c("h3", { staticClass: "mt-3 mb-3" }, [_vm._v("Comentarios")]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "row" },
+                  _vm._l(_vm.comments, function(comment) {
+                    return _c("div", { staticClass: "col-md-3 col-12" }, [
+                      comment.approved == 1
+                        ? _c("div", [
+                            _c("div", { staticClass: "card mb-3" }, [
+                              _c("div", { staticClass: "card-header" }, [
+                                _vm._v(
+                                  "\n\n\t\t\t\t\t\t\t\t" +
+                                    _vm._s(comment.title) +
+                                    "\n\n\t\t\t\t\t\t\t"
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "card-body" }, [
+                                _c("p", { staticClass: "card-text" }, [
+                                  _vm._v(
+                                    "\n\n\t\t\t\t\t\t\t\t\t" +
+                                      _vm._s(comment.comment) +
+                                      "\n\n\t\t\t\t\t\t\t\t"
+                                  )
+                                ])
+                              ])
+                            ])
+                          ])
+                        : _vm._e()
+                    ])
+                  }),
+                  0
+                )
+              ])
+            : _vm._e()
         ])
       : _c("div", [_c("h1", [_vm._v("Post inexistente")])])
   ])
