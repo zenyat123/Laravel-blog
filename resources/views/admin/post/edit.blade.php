@@ -34,24 +34,6 @@
 
 			<div class = "form-group row">
 				
-				<label for = "url" class = "col-md-2 col-form-label">Url:</label>
-
-				<div class = "col-md-6">
-
-					<input type = "text" name = "url" id = "url" class = "form-control" value = "{{ $post->url }}">
-
-				</div>
-
-				<div class = "col-md-4 mt-2">
-					
-					@error("url") <span class = "text-danger">{{ $message }}</span> @enderror
-
-				</div>
-
-			</div>
-
-			<div class = "form-group row">
-				
 				<label for = "category_id" class = "col-md-2 col-form-label">Categoría:</label>
 
 				<div class = "col-md-4">
@@ -117,20 +99,6 @@
 				<textarea name = "content" id = "content" rows = "10" class = "form-control">{{ $post->content }}</textarea>
 
 				@error("content") <span class = "text-danger">{{ $message }}</span> @enderror
-
-			</div>
-
-			<div class = "form-group row">
-
-				<div class = "col-md-4">
-
-					@if($post->image)
-
-						<img src = "/img/posts/{{ $post->image }}" class = "img-thumbnail w-100">
-
-					@endif
-					
-				</div>
 
 			</div>
 

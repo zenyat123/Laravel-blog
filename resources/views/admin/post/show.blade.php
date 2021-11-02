@@ -20,7 +20,7 @@
 
 					<input type = "text" class = "form-control" value = "{{ $post->title }}" readonly>
 
-				</div>
+				</div>				
 
 			</div>
 
@@ -32,15 +32,29 @@
 
 					<input type = "text" class = "form-control" value = "{{ $post->url }}" readonly>
 
-				</div>
+				</div>				
 
 			</div>
 
-			<div class = "form-group">
-				
-				<label>Contenido:</label>
+			<div class = "form-group row">
+					
+				<div class = "col-md-8">
+					
+					<label>Contenido:</label>
 
-				<textarea class = "form-control" rows = "12" readonly>{{ $post->content }}</textarea>
+					<span class = "form-control-lg">{!! $post->content !!}</span>
+
+				</div>
+
+				<div class = "col-md-4">
+
+					@if($post->image)
+
+						<img src = "/img/posts/{{ $post->image }}" class = "img-thumbnail w-100">
+
+					@endif
+					
+				</div>
 
 			</div>
 

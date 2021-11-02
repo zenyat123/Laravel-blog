@@ -77,10 +77,6 @@
 
 			</table>
 
-			<div class = "spacing-1"></div>
-
-			<a href = "{{ route('post.index') }}" class = "btn btn-info float-right">Volver</a>
-
 			@include("admin/other/modals/modalspostcomment")
 
 		@else

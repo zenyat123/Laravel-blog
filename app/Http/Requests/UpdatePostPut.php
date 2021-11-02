@@ -18,9 +18,8 @@ class UpdatePostPut extends FormRequest
     {
 
         return [
-            
+
             "title" => "required|min:5|max:100",
-            "url" => "required|min:5|max:100|unique:posts,url," . $this->route("post")->id,
             "content" => "required|min:10|max:2000",
             "image" => "mimes:jpeg,png|max:10240",
             "posted" => "required",
@@ -37,9 +36,6 @@ class UpdatePostPut extends FormRequest
 
             "title.required" => "El campo título es obligatorio",
             "title.min" => "El título debe tener al menos 5 caracteres",
-            "url.required" => "El campo de url es obligatorio",
-            "url.min" => "La url debe tener al menos 5 caracteres",
-            "url.unique" => "La url ya se está registrada",
             "content.required" => "El contenido es obligatorio",
             "content.min" => "El contenido debe ser minimo de 10 caracteres"
 

@@ -10,7 +10,7 @@
 
 		<div class = "spacing-1"></div>
 
-		<form method = "post" action = "{{ route('post.store') }}" enctype = "multipart/form-data">
+		<form method = "post" action = "{{ route('post.store') }}">
 		@csrf
 
 			<div class = "form-group row">
@@ -65,14 +65,6 @@
 	
 					</select>
 
-				</div>
-
-				<label class = "col-md-2 col-form-label">Imagen:</label>
-
-				<div class = "col-md-4">
-				
-					<input type = "file" name = "image" class = "form-control">
-	
 				</div>
 
 			</div>

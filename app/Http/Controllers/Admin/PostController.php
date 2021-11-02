@@ -30,17 +30,16 @@ class PostController extends Controller
     public function index(Request $request)
     {
 
-        $posts = Post::with("category")
-                         ->orderBy("created_at", request("order", "asc"));
+        $posts = Post::with("category")->orderBy("created_at", request("order", "asc"));
 
-                         if($request->has("search"))
-                         {
+        if($request->has("search"))
+        {
 
-                            $posts = $posts->where("title", "like", "%" . request("search") . "%");
+            $posts = $posts->where("title", "like", "%" . request("search") . "%");
 
-                         }
-                         
-                         $posts = $posts->paginate(6);
+        }
+
+        $posts = $posts->paginate(6);
         
         return view("admin.post.index", compact("posts"));
 
@@ -72,32 +71,10 @@ class PostController extends Controller
             $url_clean = UrlCustom::urlClean(UrlCustom::convertAccentedCharacters($request->url));
 
         }
-        
-        if($request->image)
-        {
 
-            $image_name = time() . "." . $request->image->extension();
+        $request_data = $request->validated();
 
-            $request->image->move(public_path("img/posts/"), $image_name);
-
-        }
-        else
-        {
-
-            $image_name = "";
-
-        }
-
-        $request_data = [
-
-            "title" => $request->title,
-            "url" => $url_clean,
-            "content" => $request->content,
-            "posted" => $request->posted,
-            "image" => $image_name,
-            "category_id" => $request->category_id
-
-        ];
+        $request_data["url"] = $url_clean;
 
         $validator = Validator::make($request_data, StorePostPost::myRules());
 
@@ -162,18 +139,11 @@ class PostController extends Controller
             
         }
 
-        $request_data = [
-
-            "title" => $request->title,
-            "url" => $request->url,
-            "content" => $request->content,
-            "posted" => $request->posted,
-            "image" => $image_name,
-            "category_id" => $request->category_id
-
-        ];
-        
         $post->tags()->sync($request->tags_id);
+
+        $request_data = $request->validated();
+
+        $request_data["image"] = $image_name; 
         
         $post->update($request_data);
 

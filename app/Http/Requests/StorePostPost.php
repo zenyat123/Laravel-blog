@@ -18,6 +18,7 @@ class StorePostPost extends FormRequest
             "image" => "mimes:jpeg,png|max:10240",
             "posted" => "required",
             "category_id" => "required"
+
         ];
 
     }
