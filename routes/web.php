@@ -44,5 +44,3 @@ Route::get("/category/{id}", "Web\WebController@category");
 Route::get("/post/{id}", "Web\WebController@post");
 
 Route::get("/contact", "Web\WebController@contact")->name("contact");
-
-Route::post("/sendcontact", "Web\WebController@sendcontact");

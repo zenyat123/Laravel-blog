@@ -90,15 +90,23 @@
 
 					event.preventDefault();
 
-					axios.post('/sendcontact', {
+					let self = this;
+
+					axios.post('/api/sendcontact', {
 
 						names: this.names,
 						email: this.email,
 						message: this.message
 
-					})
+					}).then(function(response) {
 
-					this.$router.push('/');
+						if(response.status == 200) {
+
+							self.$router.push('/');
+
+						}
+
+					});
 
 				}
 

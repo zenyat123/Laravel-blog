@@ -9,45 +9,40 @@
 
 	<style>
 
-		body
-		{
+		body {
+			background: #eee;
 			width: 100%;
 			height: 600px;
-			background: #eee;
 			font-family: sans-serif;
-			position: relative; 
+			position: relative;
 			padding-botton: 40px;
 		}
 
-		.message
-		{
-			width: 60%; 
+		.message {
 			background: white;
-			position: relative; 
-			margin: auto;  
+			width: 60%;
+			position: relative;
+			margin: auto;
 			padding: 20px;
 		}
 
-		.title
-		{
+		.title {
 			background: #00838F;
-			width: 90%;
+			width: 95%;
 			height: 30px;
-			line-height: 2px;
+			line-height: 0px;
 			text-align: center;
 			padding: 20px;
 			margin-bottom: 60px;
 		}
 
-		h2
-		{
-			font-weight: normal; 
+		h2 {
+			font-weight: normal;
 			color: white;
 		}
 
-		h3
-		{
-			font-weight: normal; 
+		h3 {
+			font-weight: normal;
 			color: #00838F;
 		}
 
@@ -61,7 +56,7 @@
 
 		<div class = "title">
 
-			<h2>Nuevo contacto</h2>
+			<h2>Nuevo Contacto</h2>
 
 		</div>
 
@@ -69,7 +64,7 @@
 
 		<h3>Correo electrónico: {{ $email }}</h3>
 
-		<h3>Mensaje: {{ $send }}</h3>
+		<h3>Mensaje: {{ $comments }}</h3>
 
 	</div>
 	

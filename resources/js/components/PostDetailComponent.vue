@@ -38,7 +38,7 @@
 
 					<div class = "row">
 
-						<div class = "col-md-3 col-12" v-for = "comment in comments">
+						<div class = "col-md-3 col-12" v-for = "comment in comments" v-bind:key = "comment.id">
 
 							<div v-if = "comment.approved == 1">
 

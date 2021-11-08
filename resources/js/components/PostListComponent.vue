@@ -104,9 +104,9 @@
 
 			methods: {
 
-				postClick: function(p) {
+				postClick: function(post) {
 
-					this.postSelected = p;
+					this.postSelected = post;
 
 				},
 

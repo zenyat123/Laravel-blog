@@ -2012,12 +2012,16 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     saveContact: function saveContact(event) {
       event.preventDefault();
-      axios.post('/sendcontact', {
+      var self = this;
+      axios.post('/api/sendcontact', {
         names: this.names,
         email: this.email,
         message: this.message
+      }).then(function (response) {
+        if (response.status == 200) {
+          self.$router.push('/');
+        }
       });
-      this.$router.push('/');
     }
   }
 });
@@ -2130,8 +2134,8 @@ __webpack_require__.r(__webpack_exports__);
     this.apiPosts();
   },
   methods: {
-    postClick: function postClick(p) {
-      this.postSelected = p;
+    postClick: function postClick(post) {
+      this.postSelected = post;
     },
     apiPosts: function apiPosts() {
       var _this = this;
@@ -2377,8 +2381,8 @@ __webpack_require__.r(__webpack_exports__);
     this.apiPosts();
   },
   methods: {
-    postClick: function postClick(p) {
-      this.postSelected = p;
+    postClick: function postClick(post) {
+      this.postSelected = post;
     },
     apiPosts: function apiPosts() {
       var _this = this;
@@ -55800,31 +55804,35 @@ var render = function() {
                   "div",
                   { staticClass: "row" },
                   _vm._l(_vm.comments, function(comment) {
-                    return _c("div", { staticClass: "col-md-3 col-12" }, [
-                      comment.approved == 1
-                        ? _c("div", [
-                            _c("div", { staticClass: "card mb-3" }, [
-                              _c("div", { staticClass: "card-header" }, [
-                                _vm._v(
-                                  "\n\n\t\t\t\t\t\t\t\t" +
-                                    _vm._s(comment.title) +
-                                    "\n\n\t\t\t\t\t\t\t"
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "card-body" }, [
-                                _c("p", { staticClass: "card-text" }, [
+                    return _c(
+                      "div",
+                      { key: comment.id, staticClass: "col-md-3 col-12" },
+                      [
+                        comment.approved == 1
+                          ? _c("div", [
+                              _c("div", { staticClass: "card mb-3" }, [
+                                _c("div", { staticClass: "card-header" }, [
                                   _vm._v(
-                                    "\n\n\t\t\t\t\t\t\t\t\t" +
-                                      _vm._s(comment.comment) +
-                                      "\n\n\t\t\t\t\t\t\t\t"
+                                    "\n\n\t\t\t\t\t\t\t\t" +
+                                      _vm._s(comment.title) +
+                                      "\n\n\t\t\t\t\t\t\t"
                                   )
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "card-body" }, [
+                                  _c("p", { staticClass: "card-text" }, [
+                                    _vm._v(
+                                      "\n\n\t\t\t\t\t\t\t\t\t" +
+                                        _vm._s(comment.comment) +
+                                        "\n\n\t\t\t\t\t\t\t\t"
+                                    )
+                                  ])
                                 ])
                               ])
                             ])
-                          ])
-                        : _vm._e()
-                    ])
+                          : _vm._e()
+                      ]
+                    )
                   }),
                   0
                 )

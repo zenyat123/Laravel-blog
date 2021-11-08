@@ -18,3 +18,5 @@ Route::resource("post", "Api\PostController")->only(["index", "show"]);
 Route::get("post/{category}/category", "Api\PostController@category")->name("post.category");
 
 Route::get("categories", "Api\CategoryController@index");
+
+Route::post("sendcontact", "Api\ContactController@sendcontact");
