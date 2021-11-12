@@ -69,7 +69,7 @@
 
 		<a href = "{{ route('category.create') }}" class = "btn btn-primary float-right mt-2 mb-2">Crear Categoría</a>
 
-		@include("admin/other/modals/modalscategory")
+		@include("admin/others/modals/modalscategory")
 
 	@endsection
 

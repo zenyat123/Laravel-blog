@@ -69,7 +69,7 @@
 
 		<a href = "{{ route('user.create') }}" class = "btn btn-primary float-right mt-2 mb-2">Crear Usuario</a>
 
-		@include("admin/other/modals/modalsuser")
+		@include("admin/others/modals/modalsuser")
 
 	@endsection
 	

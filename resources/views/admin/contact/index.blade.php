@@ -65,7 +65,7 @@
 
 		</table>
 
-		@include("admin/other/modals/modalscontact")
+		@include("admin/others/modals/modalscontact")
 
 	@endsection
 

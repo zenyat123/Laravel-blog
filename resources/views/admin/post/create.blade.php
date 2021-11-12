@@ -93,7 +93,7 @@
 					
 					<select name = "posted" id = "posted" class = "form-control">
 						
-						@include("admin/other/optionyesnot", ["value" => ""])
+						@include("admin/others/optionyesnot", ["value" => ""])
 
 					</select>
 

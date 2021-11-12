@@ -15,17 +15,17 @@
 
 <body>
 
-	@include("admin/other/navbar")
+	@include("admin/others/navbar")
 
 	<div class = "container">
 
 		@yield("content")
 
-		@include("admin/other/response")
+		@include("admin/others/response")
 
 	</div>
 
-	<script src = "{{ asset('js/app.js') }}"></script>
+	<script src = "{{ asset('js/dashboard.js') }}"></script>
 	
 </body>
 

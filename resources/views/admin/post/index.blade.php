@@ -85,17 +85,20 @@
 
 		</table>
 
-		{{ $posts->appends([
+		{{
 
-							"order" => request("order"),
-							"search" => request("search")
+			$posts->appends([
 
-						  ])
-		                ->links() }}
+				"order" => request("order"),
+				"search" => request("search")
+
+		  	])->links()
+
+		}}
 
 		<a href = "{{ route('post.create') }}" class = "btn btn-primary float-right mt-2 mb-2">Crear Post</a>
 
-		@include("admin/other/modals/modalspost")
+		@include("admin/others/modals/modalspost")
 
 	@endsection
 

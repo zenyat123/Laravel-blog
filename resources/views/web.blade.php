@@ -15,7 +15,7 @@
 
 	<div id = "app">
 
-		@include("web/other/navbar")
+		@include("web/others/navbar")
 
 		<div class = "container">
 
@@ -23,7 +23,7 @@
 
 		</div>
 
-		@include("web/other/footer")
+		@include("web/others/footer")
 
 	</div>
 

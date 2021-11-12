@@ -77,7 +77,7 @@
 
 			</table>
 
-			@include("admin/other/modals/modalspostcomment")
+			@include("admin/others/modals/modalspostcomment")
 
 		@else
 
@@ -93,4 +93,3 @@
 
 	@endsection
 
-	

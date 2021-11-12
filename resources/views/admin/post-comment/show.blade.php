@@ -1,62 +1,22 @@
 
 
-	<form>
-		
-		<div class = "form-group">
-			
-			<label class = "col-12 col-form-label">Título:</label>
+	<p>{{ $post_comment->title }}</p>
 
-			<div class = "col-12">
-				
-				<input type = "text" class = "form-control" value = "{{ $post_comment->title }}" readonly>
+	<p>{{ $post_comment->user->name }} {{ $post_comment->user->surname }}</p>
 
-			</div>
+	@if($post_comment->approved == 1)
 
-		</div>
+		<span class = "badge badge-success">Aprobado</span>
 
-		<div class = "form-group">
-			
-			<label class = "col-12 col-form-label">Usuario:</label>
+	@else
 
-			<div class = "col-12">
-				
-				<input type = "text" class = "form-control" value = "{{ $post_comment->user->name }} {{ $post_comment->user->surname }}" readonly>
+		<span class = "badge badge-secondary">Desaprobado</span>
 
-			</div>
+	@endif
 
-		</div>
+	<p>
 
-		<div class = "form-group">
-			
-			<label class = "col-12 col-form-label">Estado:</label>
+		{{ $post_comment->comment }}
 
-			<div class = "col-12">
-				
-				@if($post_comment->approved == 1)
-
-					<span class = "badge-lg badge-success ml-3">Aprobado</span>
-
-				@else
-
-					<span class = "badge-lg badge-secondary ml-3">Desaprobado</span>
-
-				@endif
-
-			</div>
-
-		</div>
-
-		<div class = "form-group">
-			
-			<label class = "col-12 col-form-label">Comentarios:</label>
-
-			<div class = "col-12">
-				
-				<textarea class = "form-control" rows = "9" readonly>{{ $post_comment->comment }}</textarea>
-
-			</div>
-
-		</div>
-
-	</form>	
+	</p>
 
