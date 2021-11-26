@@ -29,5 +29,12 @@ class Post extends Model
 		return $this->belongsToMany("App\Tag");
 
 	}
+
+	public function getRouteKeyName()
+	{
+
+		return "url";
+
+	}
     
 }

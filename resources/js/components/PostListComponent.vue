@@ -16,12 +16,6 @@
 							
 							<h4 class = "card-title">{{ post.title.substring(0,29) }}</h4>
 
-							<router-link v-bind:to = "{ name: 'category', params: {category_id: post.category_id} }">
-
-								<h5><span class = "badge badge-info"><i class = "fa fa-bookmark"></i> {{ post.category }}</span></h5>
-
-							</router-link>
-
 							<h5><span class = "badge badge-light"><i class = "fa fa-calendar"></i> {{ post.created_at | formatDate }}</span></h5>
 
 							<p class = "card-text">
@@ -32,7 +26,7 @@
 
 							<button class = "btn btn-primary" v-on:click = "postClick(post)">Ver resumen</button>
 
-							<router-link v-bind:to = "{ name: 'post', params: {post_id: post.id} }" class = "btn btn-success">Ver completo</router-link>
+							<router-link v-bind:to = "{ name: 'post', params: {post_id: post.url} }" class = "btn btn-success">Ver completo</router-link>
 
 						</div>
 

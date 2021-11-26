@@ -10,7 +10,7 @@
 
 					<div class = "card">
 
-						<router-link v-bind:to = "{ name: 'category', params: {category_id: category.id} }">
+						<router-link v-bind:to = "{ name: 'category', params: {category_id: category.url} }">
 
 							<div class = "card-header">
 

@@ -30,7 +30,7 @@
 						
 						<button class = "btn btn-secondary" data-dismiss = "modal">Cerrar</button>
 
-						<router-link v-bind:to = "{ name: 'post', params: {post_id: getPost.id} }" class = "btn btn-success" data-dismiss = "modal">
+						<router-link v-bind:to = "{ name: 'post', params: {post_id: getPost.url} }" class = "btn btn-success" data-dismiss = "modal">
 
 							Ver completo
 

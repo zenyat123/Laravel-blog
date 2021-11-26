@@ -2089,6 +2089,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2239,11 +2241,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       post: '',
-      comments: ''
+      comments: '',
+      tags: ''
     };
   },
   created: function created() {
@@ -2258,6 +2263,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (json) {
         _this.post = json.data;
         _this.comments = json.data.comments;
+        _this.tags = json.data.tags;
       });
     }
   }
@@ -2276,12 +2282,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_plain_pagination__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-plain-pagination */ "./node_modules/vue-plain-pagination/dist/vue-plain-pagination.umd.min.js");
 /* harmony import */ var vue_plain_pagination__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_plain_pagination__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -55387,7 +55387,7 @@ var render = function() {
                       attrs: {
                         to: {
                           name: "category",
-                          params: { category_id: category.id }
+                          params: { category_id: category.url }
                         }
                       }
                     },
@@ -55623,6 +55623,16 @@ var render = function() {
                             _vm._v(_vm._s(post.title.substring(0, 29)))
                           ]),
                           _vm._v(" "),
+                          _c("h5", [
+                            _c("span", { staticClass: "badge badge-light" }, [
+                              _c("i", { staticClass: "fa fa-calendar" }),
+                              _vm._v(
+                                " " +
+                                  _vm._s(_vm._f("formatDate")(post.created_at))
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
                           _c("p", { staticClass: "card-text" }, [
                             _c("span", {
                               domProps: {
@@ -55653,7 +55663,7 @@ var render = function() {
                               attrs: {
                                 to: {
                                   name: "post",
-                                  params: { post_id: post.id }
+                                  params: { post_id: post.url }
                                 }
                               }
                             },
@@ -55749,19 +55759,29 @@ var render = function() {
                     attrs: {
                       to: {
                         name: "category",
-                        params: { category_id: _vm.post.category_id }
+                        params: { category_id: _vm.post.category.url }
                       }
                     }
                   },
                   [
-                    _c("h5", [
+                    _c("h4", [
                       _c("span", { staticClass: "badge badge-info" }, [
-                        _c("i", { staticClass: "fa fa-bookmark" }),
-                        _vm._v(" " + _vm._s(_vm.post.category.category))
+                        _vm._v(_vm._s(_vm.post.category.category))
                       ])
                     ])
                   ]
                 ),
+                _vm._v(" "),
+                _vm._l(_vm.tags, function(tag) {
+                  return _c(
+                    "span",
+                    { staticClass: "badge badge-pill badge-info mr-1 mb-3" },
+                    [
+                      _c("i", { staticClass: "fa fa-bookmark" }),
+                      _vm._v(" " + _vm._s(tag.tag))
+                    ]
+                  )
+                }),
                 _vm._v(" "),
                 _c("h5", [
                   _c("span", { staticClass: "badge badge-light" }, [
@@ -55776,7 +55796,7 @@ var render = function() {
                   domProps: { innerHTML: _vm._s(_vm.post.content) }
                 })
               ],
-              1
+              2
             )
           ]),
           _vm._v(" "),
@@ -55877,26 +55897,6 @@ var render = function() {
                           _vm._v(_vm._s(post.title.substring(0, 29)))
                         ]),
                         _vm._v(" "),
-                        _c(
-                          "router-link",
-                          {
-                            attrs: {
-                              to: {
-                                name: "category",
-                                params: { category_id: post.category_id }
-                              }
-                            }
-                          },
-                          [
-                            _c("h5", [
-                              _c("span", { staticClass: "badge badge-info" }, [
-                                _c("i", { staticClass: "fa fa-bookmark" }),
-                                _vm._v(" " + _vm._s(post.category))
-                              ])
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
                         _c("h5", [
                           _c("span", { staticClass: "badge badge-light" }, [
                             _c("i", { staticClass: "fa fa-calendar" }),
@@ -55933,7 +55933,10 @@ var render = function() {
                           {
                             staticClass: "btn btn-success",
                             attrs: {
-                              to: { name: "post", params: { post_id: post.id } }
+                              to: {
+                                name: "post",
+                                params: { post_id: post.url }
+                              }
                             }
                           },
                           [_vm._v("Ver completo")]
@@ -56038,7 +56041,7 @@ var render = function() {
                       attrs: {
                         to: {
                           name: "post",
-                          params: { post_id: _vm.getPost.id }
+                          params: { post_id: _vm.getPost.url }
                         },
                         "data-dismiss": "modal"
                       }

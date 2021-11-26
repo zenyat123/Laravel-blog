@@ -18,11 +18,13 @@
 
 						<h1 class = "card-title">{{ post.title }}</h1>
 
-						<router-link v-bind:to = "{ name: 'category', params: {category_id: post.category_id} }">
+						<router-link v-bind:to = "{ name: 'category', params: {category_id: post.category.url} }">
 
-							<h5><span class = "badge badge-info"><i class = "fa fa-bookmark"></i> {{ post.category.category }}</span></h5>
+							<h4><span class = "badge badge-info">{{ post.category.category }}</span></h4>							
 
 						</router-link>
+
+						<span v-for = "tag in tags" class = "badge badge-pill badge-info mr-1 mb-3"><i class = "fa fa-bookmark"></i> {{ tag.tag }}</span>
 
 						<h5><span class = "badge badge-light"><i class = "fa fa-calendar"></i> {{ post.created_at | formatDate }}</span></h5>
 
@@ -91,7 +93,8 @@
 				return {
 
 					post: '',
-					comments: ''
+					comments: '',
+					tags: ''
 					
 				}
 
@@ -113,6 +116,7 @@
 
 						this.post = json.data;
 						this.comments = json.data.comments;
+						this.tags = json.data.tags;
 
 					})
 
