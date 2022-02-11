@@ -19,7 +19,7 @@
 
 				<div class = "col-md-4">
 					
-					<input type = "text" name = "name" id = "name" class = "form-control">
+					<input type = "text" name = "name" id = "name" class = "form-control" value = "{{ old('name') }}">
 
 				</div>
 
@@ -37,7 +37,7 @@
 
 				<div class = "col-md-4">
 					
-					<input type = "text" name = "surname" id = "surname" class = "form-control">
+					<input type = "text" name = "surname" id = "surname" class = "form-control" value = "{{ old('surname') }}">
 
 				</div>
 
@@ -55,7 +55,7 @@
 
 				<div class = "col-md-4">
 					
-					<input type = "email" name = "email" id = "email" class = "form-control">
+					<input type = "email" name = "email" id = "email" class = "form-control" value = "{{ old('email') }}">
 
 				</div>
 

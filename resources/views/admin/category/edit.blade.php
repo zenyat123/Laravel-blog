@@ -10,7 +10,7 @@
 
 		<div class = "spacing-1"></div>
 
-		<form method = "post" action = "{{ route('category.update', $category->id) }}">
+		<form method = "post" action = "{{ route('category.update', $category->url) }}">
 		@method("put")
 		@csrf
 

@@ -10,7 +10,7 @@
 
 		<div class = "spacing-1"></div>
 
-		<form method = "post" action = "{{ route('post.update', $post->id) }}" enctype = "multipart/form-data">
+		<form method = "post" action = "{{ route('post.update', $post->url) }}" enctype = "multipart/form-data">
 		@method("put")
 		@csrf
 

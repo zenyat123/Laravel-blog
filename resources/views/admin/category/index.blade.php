@@ -42,12 +42,11 @@
 						
 						<div class = "btn-group" role = "group">
 							
-							<a href = "{{ route('category.show', $category->id) }}" class = "btn btn-primary"><i class = "fa fa-search"></i></a>
+							<a href = "{{ route('category.show', $category->url) }}" class = "btn btn-primary"><i class = "fa fa-search"></i></a>
 
-							<a href = "{{ route('category.edit', $category->id) }}" class = "btn btn-warning"><i class = "fa fa-pencil-square-o"></i></a>
+							<a href = "{{ route('category.edit', $category->url) }}" class = "btn btn-warning"><i class = "fa fa-pencil-square-o"></i></a>
 
-							<button class = "btn btn-danger" data-toggle = "modal" data-target = "#modalDelete" 
-							                                 data-id = "{{ $category->id }}" data-category = "{{ $category->category }}">
+							<button class = "btn btn-danger" data-toggle = "modal" data-target = "#modalDelete" data-id = "{{ $category->url }}" data-category = "{{ $category->category }}">
 								
 								<i class = "fa fa-close"></i>
 

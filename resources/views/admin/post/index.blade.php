@@ -61,13 +61,13 @@
 						
 						<div class = "btn-group" role = "group">
 
-							<a href = "{{ route('post.show', $post->id) }}" class = "btn btn-primary"><i class = "fa fa-search"></i></a>
+							<a href = "{{ route('post.show', $post->url) }}" class = "btn btn-primary"><i class = "fa fa-search"></i></a>
 							
-							<a href = "{{ route('post.edit', $post->id) }}" class = "btn btn-warning"><i class = "fa fa-pencil-square-o"></i></a>
+							<a href = "{{ route('post.edit', $post->url) }}" class = "btn btn-warning"><i class = "fa fa-pencil-square-o"></i></a>
 
-							<a href = "{{ route('post-comments', $post->id) }}" class = "btn btn-info"><i class = "fa fa-comments-o"></i></a>
+							<a href = "{{ route('post-comments', $post->url) }}" class = "btn btn-info"><i class = "fa fa-comments-o"></i></a>
 							
-							<button class = "btn btn-danger" data-toggle = "modal" data-target = "#modalDelete" data-id = "{{ $post->id }}">
+							<button class = "btn btn-danger" data-toggle = "modal" data-target = "#modalDelete" data-id = "{{ $post->url }}">
 
 								<i class = "fa fa-close"></i>
 
